@@ -86,7 +86,7 @@ class Contact extends Component {
 						   <span>{phone}</span>
 					   </p>
 				   </div>
-
+               {/*
                <div className="widget widget_tweets">
                   <h4 className="widget-title">Latest Tweets</h4>
                   <ul id="twitter">
@@ -107,7 +107,8 @@ class Contact extends Component {
                         <b><a href="#">3 Days Ago</a></b>
                      </li>
                   </ul>
-		         </div>
+               </div>
+               */}
             </aside>
       </div>
    </section>
