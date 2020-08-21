@@ -1,7 +1,7 @@
 {
   "main": {
     "name":"Seth Way",
-    "description":"Software Engineer and Military Veteran. Currently looking for a positive and engaging team where I can contribute while continuing to learn and grow",
+    "description":"Software Engineer & Military Veteran. Currently looking for a positive and engaging team where I can contribute while continuing to learn and grow",
     "image":"headShot.jpg",
     "bio":"Military Veteran with five years of active duty experience seeking a career in Information Technology. Proven manager entrusted to meet deadlines and solve problems in a demanding, project-oriented environment. Excellent team-first attitude with a passion for collaboration. Outstanding written and verbal communication skills with an eye for detail.",
     "contactmessage":"Please leave a message or visit me on social media. I'm very receptive to any feedback or suggestions and would be excited to discuss any possibilities for collaboration.",
@@ -16,7 +16,7 @@
       "zip": "98118"
     },
     "website": "http://www.timbakerdev.com",
-    "resumedownload":"http://timbakerdev.com",
+    "resumedownload":"SethWay_Resume.pdf",
     "social":[
       {
         "name":"linkedin",
