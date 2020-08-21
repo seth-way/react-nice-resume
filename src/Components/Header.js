@@ -5,9 +5,10 @@ class Header extends Component {
   render() {
 
     if(this.props.data){
-       var linkedIn = this.props.data.linkedIn;
-       var github = this.props.data.github;
+      var linkedIn = this.props.data.linkedIn;
+      var github = this.props.data.github;
       var name = this.props.data.name;
+      var firstName = name.split(' ')[0];
       var description= this.props.data.description;
       var city= this.props.data.address.city;
       var networks= this.props.data.social.map(function(network){
@@ -34,7 +35,7 @@ class Header extends Component {
       <div className="row banner">
       
          <div className="banner-text">
-            <h1 className="responsive-headline">{name}</h1>
+            <h1 className="responsive-headline">{`${firstName}.`}</h1>
             <h3>{description}.</h3>
             <hr />
             <ul className="social">
