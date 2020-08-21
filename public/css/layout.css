@@ -112,7 +112,7 @@ header .scrolldown a {
    -o-transition: all .3s ease-in-out;
    transition: all .3s ease-in-out;
 }
-header .scrolldown a:hover { color: #0762f9; }
+header .scrolldown a:hover { color: #fe6928; }
 
 /* primary navigation
 --------------------------------------------------------------------- */
@@ -174,8 +174,7 @@ ul#nav li a {
 }
 
 ul#nav li a:active { background-color: transparent !important; }
-ul#nav li.current a { color: #fe6928; }
-
+ul#nav li.current a { color: #69BE28; }
 
 /* ------------------------------------------------------------------ */
 /* c. About Section
