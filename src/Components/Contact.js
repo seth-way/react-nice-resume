@@ -65,11 +65,11 @@ class Contact extends Component {
     }
 
     const { formSubmitted } = this.state;
-    
+
     const renderFormSubmitted = () => (
        <section>
          <div className="row banner banner-text">
-            <h3>Thank you for your email submission! I do my best to read and respond to submissions as quickly as possible.</h3>
+            <h3>Thank you for reaching out! I do my best to read and respond to email submissions as quickly as possible.</h3>
          </div>
        </section>
     );
