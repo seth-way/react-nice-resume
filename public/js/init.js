@@ -1,3 +1,4 @@
+
 /*-----------------------------------------------------------------------------------
 /*
 /* Init JS
@@ -138,7 +139,7 @@
 ------------------------------------------------------*/
 
    $('form#contactForm button.submit').click(function() {
-
+   
       $('#image-loader').fadeIn();
 
       var contactName = $('#contactForm #contactName').val();
@@ -148,7 +149,12 @@
 
       var data = 'contactName=' + contactName + '&contactEmail=' + contactEmail +
                '&contactSubject=' + contactSubject + '&contactMessage=' + contactMessage;
+      
+      
 
+      
+
+      /*
       $.ajax({
 
 	      type: "POST",
@@ -173,16 +179,7 @@
 	      }
 
       });
+      */
       return false;
    });
-
-
 });
-
-
-
-
-
-
-
-
