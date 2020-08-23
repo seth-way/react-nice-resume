@@ -878,6 +878,10 @@ call-to-action .button {
 	color: #0762f9;
 	font-size: 13px;
 }
+#contact .banner-text {
+   width: 70%;
+   text-align: center;
+}
 #message-warning, #message-success {
    display: none;
 	background: #0F0F0F;
