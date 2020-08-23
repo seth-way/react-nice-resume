@@ -25,9 +25,10 @@ class Contact extends Component {
    }
 
    handleSubmit(event) {
-      var service_id = "default_service";
-      var template_id = "contact_us";
+      const service_id = "default_service";
+      const template_id = "contact_us";
       const {contactName, contactEmail, contactSubject, contactMessage} = this.state;
+
       var params = {
          "contactName": contactName,
          "contactEmail": contactEmail,
@@ -42,6 +43,7 @@ class Contact extends Component {
             alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
 
          });
+
       event.preventDefault();
    }
 
@@ -63,6 +65,7 @@ class Contact extends Component {
     }
 
     const { formSubmitted } = this.state;
+    
     const renderFormSubmitted = () => (
        <section>
          <div className="row banner banner-text">
