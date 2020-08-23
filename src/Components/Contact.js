@@ -1,6 +1,54 @@
 import React, { Component } from 'react';
+import emailjs from "emailjs-com";
+
 
 class Contact extends Component {
+   constructor(props) {
+      super(props);
+
+      this.state = { 
+         formSubmitted: false,
+         contactName: '',
+         contactEmail: '',
+         contactSubject: '',
+         contactMessage: '',
+      };
+
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+   }
+
+   handleChange(event) {
+      const { name, value } = event.target;
+      this.setState({ [name]: value });
+      event.preventDefault();
+   }
+
+   handleSubmit(event) {
+      var service_id = "default_service";
+      var template_id = "contact_us";
+      const {contactName, contactEmail, contactSubject, contactMessage} = this.state;
+      var params = {
+         "contactName": contactName,
+         "contactEmail": contactEmail,
+         "contactSubject": contactSubject,
+         "contactMessage": contactMessage,
+      };
+
+      emailjs.send(service_id, template_id, params)
+  	      .then(() => { 
+            this.setState({formSubmitted: true});
+         }, function(err) {
+            alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
+
+         });
+      event.preventDefault();
+   }
+
+   componentDidMount() {
+      emailjs.init("user_pB5iiwdQB3NQx9EcvTMPY");
+   }
+
   render() {
 
     if(this.props.data){
@@ -14,7 +62,16 @@ class Contact extends Component {
       var message = this.props.data.contactmessage;
     }
 
-    return (
+    const { formSubmitted } = this.state;
+    const renderFormSubmitted = () => (
+       <section>
+         <div className="row banner banner-text">
+            <h3>Thank you for your email submission! I do my best to read and respond to submissions as quickly as possible.</h3>
+         </div>
+       </section>
+    );
+
+    const renderForm = () => (
       <section id="contact">
 
          <div className="row section-head">
@@ -36,7 +93,7 @@ class Contact extends Component {
          <div className="row">
             <div className="eight columns">
 
-               <form action="" method="post" id="contactForm" name="contactForm">
+               <form action="" method="post" id="contactForm" name="contactForm" onSubmit={this.handleSubmit}>
 					<fieldset>
 
                   <div>
@@ -56,7 +113,7 @@ class Contact extends Component {
 
                   <div>
                      <label htmlFor="contactMessage">Message <span className="required">*</span></label>
-                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
+                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage" onChange={this.handleChange}></textarea>
                   </div>
 
                   <div>
@@ -113,6 +170,12 @@ class Contact extends Component {
       </div>
    </section>
     );
+    
+   return (
+     <section id="contact">
+       {formSubmitted ?  renderFormSubmitted() : renderForm()}
+      </section>
+   );
   }
 }
 
