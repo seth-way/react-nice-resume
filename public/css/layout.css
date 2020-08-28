@@ -13,8 +13,9 @@
    e. Portfolio Section
    f. Call To Action Section
    g. Testimonials Section
-   h. Contact Section
-   i. Footer
+   h. Algorithms Section
+   i. Contact Section
+   j. Footer
 
 ===================================================================== */
 
@@ -782,9 +783,111 @@ call-to-action .button {
     background: rgba(255, 255, 255, .9);
     cursor: default;
 }
+/* ------------------------------------------------------------------ */
+/* h. Algorithms Section
+/* ------------------------------------------------------------------ */
+
+#algorithms {
+   background: #e3be42;
+   padding-top: 96px;
+   padding-bottom: 66px;
+   color: black;
+   text-align: center;
+}
+#algorithms h1 {
+   width: 70%;
+   font: 22px/30px opensans-bold, sans-serif;;
+   margin: 0 auto 18px auto;
+   padding-top: 15px;
+   margin-bottom: 45px;
+}
+#algorithms h3 {
+   font: 22px/30px opensans-bold, sans-serif;;
+   margin: 0 auto 18px auto;
+   padding-top: 15px;
+}
+#algorithms h5 {
+   font: 18px/26px opensans-bold, sans-serif;;
+   margin: 0 auto 18px auto;
+   padding-bottom: 15px;
+}
+#algorithms .carouselContainer {
+   display: block;
+   width: 100%;
+   margin: auto;
+   align-content: center;
+}
+
+#algorithms .carouselContainer .carouselCard {
+   height: 300px;
+   width: 300px;
+   border-radius: 10px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   transition: transform 0.2s;
+}
+#algorithms .carouselContainer .carouselCard:hover {
+   transform: scale(0.95, 0.95);
+}
+#algorithms button {
+   background: rgba(0, 0, 0, 0);
+   outline: none;
+}
+/* Right Arrow Carousel Button */
+
+#scroll-right a {
+	text-decoration: none;
+	border: 0 none;
+	display: block;
+	width: 60px;
+	height: 60px;
+	background-color: #525252;
+
+	-webkit-transition: all 0.2s ease-in-out;
+   -moz-transition: all 0.2s ease-in-out;
+   -o-transition: all 0.2s ease-in-out;
+   -ms-transition: all 0.2s ease-in-out;
+   transition: all 0.2s ease-in-out;
+
+   color: #fff;
+   font-size: 21px;
+   line-height: 60px;
+ 	border-radius: 100%;
+}
+#scroll-right a:hover { background-color: #0055A5; }
+/* Left Arrow Carousel Button */
+
+#scroll-left a {
+	text-decoration: none;
+   border: 0 none;
+	display: block;
+	width: 60px;
+	height: 60px;
+	background-color: #525252;
+
+	-webkit-transition: all 0.2s ease-in-out;
+   -moz-transition: all 0.2s ease-in-out;
+   -o-transition: all 0.2s ease-in-out;
+   -ms-transition: all 0.2s ease-in-out;
+   transition: all 0.2s ease-in-out;
+
+   color: #fff;
+   font-size: 21px;
+   line-height: 60px;
+ 	border-radius: 100%;
+}
+#scroll-left a:hover { background-color: #632878; }
+.carouselCard h1 {
+
+}
+.carouselCard img {
+   height: 55px;
+   width: auto;
+}
 
 /* ------------------------------------------------------------------ */
-/* h. Contact Section
+/* i. Contact Section
 /* ------------------------------------------------------------------ */
 
 #contact {
@@ -925,7 +1028,7 @@ call-to-action .button {
 
 
 /* ------------------------------------------------------------------ */
-/* i. Footer
+/* j. Footer
 /* ------------------------------------------------------------------ */
 
 footer {
