@@ -75,11 +75,11 @@
       },
       {
         "name":"CSS",
-        "level":"60%"
+        "level":"50%"
       },
       {
         "name":"ReactJS",
-        "level":"80%"
+        "level":"75%"
       }, 
       {
         "name":"ExpressJS",
@@ -87,15 +87,15 @@
       },
       {
         "name":"AWS",
-        "level": "75%"
+        "level": "50%"
       },
       {
         "name":"Azure",
-        "level": "70%"
+        "level": "45%"
       },
       {
         "name":"Docker",
-        "level":"45%"
+        "level":"35%"
       }
     ]
   },
