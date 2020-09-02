@@ -796,18 +796,18 @@ call-to-action .button {
 }
 #algorithms h1 {
    width: 70%;
-   font: 22px/30px opensans-bold, sans-serif;;
+   font: 22px/30px opensans-bold, sans-serif;
    margin: 0 auto 18px auto;
    padding-top: 15px;
    margin-bottom: 45px;
 }
 #algorithms h3 {
-   font: 22px/30px opensans-bold, sans-serif;;
+   font: 22px/30px opensans-bold, sans-serif;
    margin: 0 auto 18px auto;
    padding-top: 15px;
 }
 #algorithms h5 {
-   font: 18px/26px opensans-bold, sans-serif;;
+   font: 18px/26px opensans-bold, sans-serif;
    margin: 0 auto 18px auto;
    padding-bottom: 15px;
 }
@@ -878,13 +878,73 @@ call-to-action .button {
  	border-radius: 100%;
 }
 #scroll-left a:hover { background-color: #632878; }
-.carouselCard h1 {
-
+#algorithms .carouselContainer .carouselCard h3 {
+   word-wrap: break-word;
 }
 .carouselCard img {
    height: 55px;
    width: auto;
 }
+.algorithmModal {
+   position: absolute;
+   top: 80px;
+   left: 40px;
+   right: 40px;
+   bottom: 40px;
+   padding-top: 20px;
+   padding-bottom: 20px;
+   padding-left: 20px;
+   padding-right: 20px;
+   overflow-y: auto;
+   overflow-x: scroll;
+   background-color: white;
+   white-space: pre-wrap;
+   border-left: solid 15px #FAFAFA;
+   border-top: solid 15px #FAFAFA;
+ }
+ .algorithmOverlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: #82A0C2;
+ }
+.algorithmModal h1 {
+   text-align: center;
+ }
+ .algorithmModal .algorithmButtons {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+ }
+ .algorithmModal h1 {
+    margin-left: auto;
+    margin-right: auto;
+ }
+ .algorithmModal p {
+   margin-top:0;
+   margin-bottom:0;
+   width: 90%;
+   margin-left: auto;
+   margin-right: auto;
+ }
+ .algorithmModal .description {
+    color: darkslategray !important;
+    font-style: oblique;
+ }
+ .algorithmModal .solution {
+    border: thick solid #696969;
+    background-color: #282828;
+    color: #66FF66;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow-x: auto;
+ }
 
 /* ------------------------------------------------------------------ */
 /* i. Contact Section
@@ -1127,4 +1187,14 @@ footer .social-links li:first-child { margin-left: 0; }
 }
 .github-btn{
    background-color: #34495e !important;
+}
+.leetcode-btn{
+   background-color: #F0B225 !important;
+   margin-left: 10px;
+   margin-right: 10px;
+}
+.close-btn{
+   background-color: #f14c25 !important;
+   margin-left: 10px;
+   margin-right: 10px;
 }
