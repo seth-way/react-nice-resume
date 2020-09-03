@@ -819,8 +819,6 @@ call-to-action .button {
 }
 
 #algorithms .carouselContainer .carouselCard {
-   height: 300px;
-   width: 300px;
    border-radius: 10px;
    display: flex;
    flex-direction: column;

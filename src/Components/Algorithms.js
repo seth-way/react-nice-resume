@@ -79,8 +79,8 @@ class Algorithms extends Component {
    }
   
    componentDidMount() {
-    this.fetchAlgorithms();
-    // this.getDummyData();
+    // this.fetchAlgorithms();
+    this.getDummyData();
    }
    
    render() {
