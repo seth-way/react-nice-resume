@@ -896,9 +896,9 @@ call-to-action .button {
    overflow-y: auto;
    overflow-x: scroll;
    background-color: white;
-   white-space: pre-wrap;
    border-left: solid 15px #FAFAFA;
    border-top: solid 15px #FAFAFA;
+   display: flex;
  }
  .algorithmOverlay {
    position: fixed;
@@ -925,13 +925,15 @@ call-to-action .button {
  .algorithmModal p {
    margin-top:0;
    margin-bottom:0;
-   width: 90%;
+   min-width: 90%;
    margin-left: auto;
    margin-right: auto;
  }
  .algorithmModal .description {
     color: darkslategray !important;
     font-style: oblique;
+    display: inline-block;
+    white-space: pre;
  }
  .algorithmModal .solution {
     border: thick solid #696969;
@@ -942,6 +944,7 @@ call-to-action .button {
     padding-top: 20px;
     padding-bottom: 20px;
     overflow-x: auto;
+    white-space: pre;
  }
 
 /* ------------------------------------------------------------------ */
