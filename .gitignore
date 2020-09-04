@@ -22,4 +22,6 @@ yarn-error.log*
 
 package-lock.json
 
+/src/config.js
+
 public/dummyData.json
