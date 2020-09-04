@@ -6,11 +6,8 @@
   "dependencies": {
     "anix": "^0.3.3",
     "axios": "^0.20.0",
-<<<<<<< HEAD
-=======
     "bluebird": "^3.7.2",
     "dotenv": "^8.2.0",
->>>>>>> algorithms
     "emailjs-com": "^2.6.3",
     "jquery": "^3.2.1",
     "particles-bg": "^2.3.12",
