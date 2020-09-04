@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
+import request from 'request';
+import * as Promise from 'bluebird';
 import CarouselComponent from './AlgorithmComponents/CarouselComponent';
-import axios from 'axios';
+import config from '../config.js';
 
-const fetchFromAPI = (path, callback) => {
-    axios.get(path)
-        .then(({ data }) => {
-            callback(null, data);
-        })
-        .catch(err => {
-            callback(err);
-        });
+Promise.config({longStackTraces: false, warnings: false})
+
+const fetchAlgorithms = async (path, callback) => {
+    const options = {
+        headers: {
+            'User-Agent': 'request',
+            'Authorization': `token ${config.TOKEN}`
+        }
+    };
+
+    let response = await fetch(path, options)
+
+    if (response.ok) {
+        let data = await response.json();
+        callback(null, data);
+    } else {
+        callback(response.status);
+    }
+};
+
+const fetchAlgorithmsPromisified = Promise.promisify(fetchAlgorithms);
+
+const calculateAgeInHours = (date) => {
+    const oneHour = 60 * 60 * 1000;
+    const now = new Date();
+    const diff = (now - new Date(date)) / oneHour;
+    return diff;
 }
 
-const calculateAge = (date) => {
+const calculateAgeInDays = (date) => {
     const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
     const today = new Date();
     const diff = Math.round(Math.abs((today - new Date(date)) / oneDay));
@@ -27,60 +48,71 @@ class Algorithms extends Component {
          algorithms: {},
       };
    }
+   /*
+   fetchLocalAlgorithms(){
+      fetchAlgorithmsPromisified('./algorithmsData.json')
+        .then(({ date, algorithms }) => {
+            const hoursSinceUpdate = calculateAgeInHours(date);
+            if (hoursSinceUpdate < 1) {
+                console.log('last updated: ', date);
+                this.setState({ algorithms });
+            } else {
+                console.log('fetching new algorithms data...')
+                this.fetchAlgorithmsFromAPI();
 
-   getDummyData(){
-      axios.get('./dummyData.json')
-        .then(({ data }) => {this.setState({algorithms: data})})
-        .catch((err) => {alert(err)})
-   }
-
-   fetchAlgorithms() {
-    fetchFromAPI('https://api.github.com/repos/seth-way/algorithms/commits', (err, data) => {
-        if (err) {
-            alert(err);
-        } else {
-            for (let i = 0; i < data.length; i += 1) {
-                const { sha } = data[i];
-                fetchFromAPI(`https://api.github.com/repos/seth-way/algorithms/commits/${sha}`, (err2, data) => {
-                    if (err2) {
-                        console.log(err2);
-                    } else if (data.files[0] && data.files[0].status === 'added' && data.files[0].filename[0] !== '.' && !this.state.algorithms[data.files[0].filename]) {
-                        const { message } = data.commit;
-                        const { filename } = data.files[0];
-                        const daysOld = calculateAge(data.commit.author.date);
-                        const title = filename.split('/')[1].slice(0, -3);
-                        const url = `https://github.com/seth-way/algorithms/blob/master/${filename.split(' ')[0]}%20${filename.split(' ')[1]}`;
-                        const difficulty = filename[0] === '1' ? 'Easy' : filename[0] === '2' ? 'Medium' : 'Hard';
-                        fetchFromAPI(`https://raw.githubusercontent.com/seth-way/algorithms/master/${filename}`, (err3, data) => {
-                            if (err3) {
-                                console.log(err3);
-                            } else {
-                                const body = JSON.stringify(data);
-                                const { algorithms } = this.state;
-                                algorithms[filename] = {
-                                    message,
-                                    filename,
-                                    daysOld,
-                                    title,
-                                    url,
-                                    difficulty,
-                                    body,
-                                };
-                                if (body.length) {
-                                    this.setState({ algorithms });
-                                }
-                            }
-                        });
-                    }
-                });
             }
-        }
-    });
+        })
+        .catch(alert);
+   }
+   */
+   fetchAlgorithmsFromAPI() {
+    const atob = require('atob');
+    fetchAlgorithmsPromisified('https://api.github.com/repos/seth-way/algorithms/commits')
+        .then((commits) => {
+            commits.forEach(({ sha }) => {
+                fetchAlgorithmsPromisified(`https://api.github.com/repos/seth-way/algorithms/commits/${sha}`)
+                    .then((data) => {
+                        if (data.files[0] && data.files[0].status === 'added' && data.files[0].filename[0] !== '.' && !this.state.algorithms[data.files[0].filename]) {
+                            const { message } = data.commit;
+                            const { filename } = data.files[0];
+                            const daysOld = calculateAgeInDays(data.commit.author.date);
+                            const title = filename.split('/')[1].slice(0, -3);
+                            const url = `https://github.com/seth-way/algorithms/blob/master/${filename.split(' ')[0]}%20${filename.split(' ')[1]}`;
+                            const difficulty = filename[0] === '1' ? 'Easy' : filename[0] === '2' ? 'Medium' : 'Hard';
+                            fetchAlgorithmsPromisified(`https://api.github.com/repos/seth-way/algorithms/contents/${filename}`)
+                                .then(({ content }) => {
+                                    const body = JSON.stringify(atob(content));
+                                    const { algorithms } = this.state;
+                                    algorithms[filename] = {
+                                        message,
+                                        filename,
+                                        daysOld,
+                                        title,
+                                        url,
+                                        difficulty,
+                                        body,
+                                    };
+                                    if (body.length) {
+                                        this.setState({ algorithms });
+                                    }
+                                })
+                                .catch(alert);
+                        }
+                    })
+                    .catch(alert);
+            })
+        })
+        .then(() => {console.log('finished ', this.state.algorithms)})
+        .catch(alert);
    }
   
    componentDidMount() {
+<<<<<<< HEAD
     // this.fetchAlgorithms();
     this.getDummyData();
+=======
+    this.fetchAlgorithmsFromAPI();
+>>>>>>> algorithms
    }
    
    render() {

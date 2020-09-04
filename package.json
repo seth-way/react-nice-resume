@@ -6,6 +6,11 @@
   "dependencies": {
     "anix": "^0.3.3",
     "axios": "^0.20.0",
+<<<<<<< HEAD
+=======
+    "bluebird": "^3.7.2",
+    "dotenv": "^8.2.0",
+>>>>>>> algorithms
     "emailjs-com": "^2.6.3",
     "jquery": "^3.2.1",
     "particles-bg": "^2.3.12",
@@ -15,6 +20,7 @@
     "react-ga": "^2.3.5",
     "react-modal": "^3.11.2",
     "react-scripts": "1.0.17",
+    "request": "^2.88.2",
     "styled-components": "^5.1.1"
   },
   "scripts": {

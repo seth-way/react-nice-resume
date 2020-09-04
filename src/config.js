@@ -1,0 +1,1 @@
+export default {TOKEN: 'f2209b96838bb765d032676508841f04136f8fd5'};
