@@ -48,23 +48,7 @@ class Algorithms extends Component {
          algorithms: {},
       };
    }
-   /*
-   fetchLocalAlgorithms(){
-      fetchAlgorithmsPromisified('./algorithmsData.json')
-        .then(({ date, algorithms }) => {
-            const hoursSinceUpdate = calculateAgeInHours(date);
-            if (hoursSinceUpdate < 1) {
-                console.log('last updated: ', date);
-                this.setState({ algorithms });
-            } else {
-                console.log('fetching new algorithms data...')
-                this.fetchAlgorithmsFromAPI();
-
-            }
-        })
-        .catch(alert);
-   }
-   */
+   
    fetchAlgorithmsFromAPI() {
     const atob = require('atob');
     fetchAlgorithmsPromisified('https://api.github.com/repos/seth-way/algorithms/commits')
@@ -107,12 +91,7 @@ class Algorithms extends Component {
    }
   
    componentDidMount() {
-<<<<<<< HEAD
-    // this.fetchAlgorithms();
-    this.getDummyData();
-=======
     this.fetchAlgorithmsFromAPI();
->>>>>>> algorithms
    }
    
    render() {
