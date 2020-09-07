@@ -26,13 +26,6 @@ const fetchAlgorithms = async (path, callback) => {
 
 const fetchAlgorithmsPromisified = Promise.promisify(fetchAlgorithms);
 
-const calculateAgeInHours = (date) => {
-    const oneHour = 60 * 60 * 1000;
-    const now = new Date();
-    const diff = (now - new Date(date)) / oneHour;
-    return diff;
-}
-
 const calculateAgeInDays = (date) => {
     const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
     const today = new Date();
@@ -86,7 +79,14 @@ class Algorithms extends Component {
                     .catch(alert);
             })
         })
-        .then(() => {console.log('finished ', this.state.algorithms)})
+        .then(() => {
+            const { algorithms } = this.state;
+            algorithms['githubRepository'] = {
+                filename: 'github repository',
+                daysOld: 999999999999999999999999999999999,
+                title: 'Check Out the Entire Repo on Github!'
+            };
+        })
         .catch(alert);
    }
   
@@ -104,9 +104,21 @@ class Algorithms extends Component {
             I try to challenge myself with algorithms daily.
             Check out my most recent solutions!
           </h1>
-          <div>
+          <div style={{marginTop: "5px", marginBottom: "15px" }}>
             {Object.keys(algorithms).length > 0 ? <CarouselComponent algorithms={algorithms}/> : ''}
           </div>
+          <h1>
+            ... or visit the entire repo on
+                <a
+                    href="https://github.com/seth-way/algorithms"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    style= {{color: "#872657"}}
+                >
+                    {' '}GitHub
+                </a>
+            .
+          </h1>
         </div>
     </section>
     );
