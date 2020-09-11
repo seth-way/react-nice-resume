@@ -39,7 +39,11 @@ class Algorithms extends Component {
 
       this.state = { 
          algorithms: {},
+         showSolution: false,
       };
+
+      this.openSolution = this.openSolution.bind(this);
+      this.closeSolution = this.closeSolution.bind(this);
    }
    
    fetchAlgorithmsFromAPI() {
@@ -73,10 +77,10 @@ class Algorithms extends Component {
                                         this.setState({ algorithms });
                                     }
                                 })
-                                .catch(alert);
+                                .catch(console.log);
                         }
                     })
-                    .catch(alert);
+                    .catch(console.log);
             })
         })
         .then(() => {
@@ -87,28 +91,43 @@ class Algorithms extends Component {
                 title: 'Check Out the Entire Repo on Github!'
             };
         })
-        .catch(alert);
+        .catch(console.log);
    }
   
    componentDidMount() {
     this.fetchAlgorithmsFromAPI();
    }
+
+   openSolution() {
+     this.setState({showSolution: true});
+   }
+
+   closeSolution() {
+     this.setState({showSolution: false});
+   }
    
    render() {
-    const { algorithms } = this.state;
-
+    const { algorithms, showSolution } = this.state;
+    
     return (
       <section id="algorithms">  
         <div className="row">
-          <h1>
-            I try to challenge myself with algorithms daily.
-            Check out my most recent solutions!
-          </h1>
-          <div style={{marginTop: "5px", marginBottom: "15px" }}>
-            {Object.keys(algorithms).length > 0 ? <CarouselComponent algorithms={algorithms}/> : ''}
-          </div>
-          <h1>
-            ... or visit the entire repo on
+            <h1 style={showSolution ? {display: "none"} : {}}>
+                I try to challenge myself with algorithms daily.
+                Check out my most recent solutions!
+            </h1>
+            <div style={{marginTop: "5px", marginBottom: "15px" }}>
+                {Object.keys(algorithms).length > 0 ?
+                    <CarouselComponent
+                        algorithms={algorithms}
+                        showSolution={showSolution}
+                        openSolution={this.openSolution}
+                        closeSolution={this.closeSolution}
+                    /> :
+                ''}
+            </div>
+            <h1 style={showSolution ? {display: "none"} : {}}>
+                ... or visit the entire repo on
                 <a
                     href="https://github.com/seth-way/algorithms"
                     rel="noopener noreferrer"
@@ -117,8 +136,8 @@ class Algorithms extends Component {
                 >
                     {' '}GitHub
                 </a>
-            .
-          </h1>
+                .
+            </h1>
         </div>
     </section>
     );

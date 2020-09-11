@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Modal from 'react-modal';
+import Modal, { setAppElement } from 'react-modal';
 import { render } from 'react-dom';
-import AlgarithmModal from './AlgorithmModal';
 
 // array used for [border, background] card colors
 const colorPicker = {
@@ -18,11 +17,8 @@ class CarouselCard extends Component {
       const { algorithm } = props;
       this.state = {
         algorithm,
-        modalIsOpen: false,
         windowWidth: 1400,
       };
-      this.openModal = this.openModal.bind(this);
-      this.closeModal = this.closeModal.bind(this);
     }
 
     updateDimensions = () =>{
@@ -37,17 +33,11 @@ class CarouselCard extends Component {
       window.removeEventListener('resize', this.updateDimensions);
     }
 
-    openModal() {
-      this.setState({modalIsOpen: true});
-    }
-
-    closeModal() {
-      this.setState({modalIsOpen: false});
-    }
-
     render() {
-      const { algorithm, modalIsOpen, windowWidth } = this.state;
+      const { algorithm, windowWidth } = this.state;
       const { filename, title } = algorithm;
+      const { setActiveSolution, openSolution } = this.props;
+
       const cardWidth = windowWidth > 770 ? '300px' : '150px';
 
       const styleObj = {
@@ -81,26 +71,33 @@ class CarouselCard extends Component {
          
         return(
           <div
-            className="carouselCard"
-            style={styleObj}
-            onClick={modalIsOpen ? () => {} : () => this.openModal()}
+            onClick={(e) => {
+              setActiveSolution(e);
+              openSolution();
+            }}
           >
-            <h3 style={h3Style}>{title}</h3>
-            <p style={windowWidth > 770 ? {} : {margin: '-20px auto 0 auto'}} >
-              {daysOld === 0 ? 'Solved Today!' : daysOld === 1 ? 'Solved Yesterday' : `Solved ${daysOld} days ago...`}
-            </p>
-            <a><img src="./images/algorithms/leetcode.png" alt="leetcode_logo" style={windowWidth > 770 ? {} : {height: '0px', width: '0px'}}/></a>
-            <h5 style={windowWidth > 770 ? {} : {margin: '-25px auto 0 auto'}} >{difficulty}</h5>
-            <Modal
-              isOpen={modalIsOpen}
-              onRequestClose={() => this.closeModal()}
-              contentLabel={title}
-              className="algorithmModal"
-              overlayClassName="algorithmOverlay"
-              shouldCloseOnOverlayClick={false}
+            <div
+              className="carouselCard"
+              style={styleObj}
+              value={filename}
             >
-              <AlgarithmModal algorithm={algorithm} closeModal={this.closeModal} />
-            </Modal>
+              <h3
+                style={h3Style}
+                value={filename}
+              >
+                {title}
+              </h3>
+              <p
+                style={windowWidth > 770 ? {} : {margin: '-20px auto 0 auto'}}
+                value={filename}
+              >
+                {daysOld === 0 ? 'Solved Today!' : daysOld === 1 ? 'Solved Yesterday' : `Solved ${daysOld} days ago...`}
+              </p>
+              <a value={filename}>
+                <img value={filename} src="./images/algorithms/leetcode.png" alt="leetcode_logo" style={windowWidth > 770 ? {} : {height: '0px', width: '0px'}}/>
+              </a>
+              <h5 style={windowWidth > 770 ? {} : {margin: '-25px auto 0 auto'}} value={filename} >{difficulty}</h5>
+            </div>
           </div>
         );
       } else {

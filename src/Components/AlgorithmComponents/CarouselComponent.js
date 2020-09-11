@@ -1,15 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Carousel, { consts} from 'react-elastic-carousel';
 import CarouselCard from './CarouselCard';
+import Solution from './Solution';
 
-class CarouselComponent extends React.Component {
+class CarouselComponent extends Component {
   constructor(props) {
     super(props);
-    const { algorithms } = props; 
+    const {
+      algorithms,
+     } = props; 
   
     this.state = { 
-      algorithms: algorithms,
+      algorithms,
+      activeSolution: '',
     };
+
+    this.setActiveSolution = this.setActiveSolution.bind(this);
 
     this.breakPoints = [
       { width: 1, itemsToShow: 1},
@@ -32,10 +38,16 @@ class CarouselComponent extends React.Component {
     )
   }
 
+  setActiveSolution({ target }) {
+    this.setState({ activeSolution: target.getAttribute('value') });
+  }
+
   render() {
     const {
       algorithms,
+      activeSolution,
     } = this.state;
+    const { openSolution, closeSolution, showSolution } = this.props;
     const fileNames = Object.keys(algorithms);
     fileNames.sort((a, b) => (algorithms[a].daysOld - algorithms[b].daysOld));
 
@@ -43,14 +55,39 @@ class CarouselComponent extends React.Component {
 
       algorithms.length === 0 ?
         <div></div> :
-        <div className="carouselContainer">
-          <Carousel
-            renderArrow={this.myArrow}
-            pagination={false}
-            breakPoints={this.breakPoints}
-          >           
-            {fileNames.map((fileName) => (<CarouselCard key={fileName} algorithm={algorithms[fileName]} />))}
-          </Carousel>
+        <div>
+          <div
+            className="carouselContainer"
+            style={showSolution ? {display: "none"} : {}}
+          >
+            <Carousel
+              renderArrow={this.myArrow}
+              pagination={false}
+              breakPoints={this.breakPoints}
+            >           
+              {fileNames.map((fileName) => (
+                <CarouselCard
+                  key={fileName}
+                  algorithm={algorithms[fileName]}
+                  setActiveSolution={this.setActiveSolution}
+                  openSolution={openSolution}
+                />
+              ))}
+            </Carousel>
+          </div>
+          <div
+            style={showSolution ? {} : {display: "none", height: "0px"}}
+          >
+            {
+              activeSolution === "" ?
+              <div>{activeSolution}</div> :
+              <Solution
+                algorithm={algorithms[activeSolution]}
+                closeSolution={closeSolution}
+                showSolution={showSolution}
+              />
+            }
+          </div>
         </div>
     );  
   }

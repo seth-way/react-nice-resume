@@ -895,70 +895,104 @@ call-to-action .button {
    height: 55px;
    width: auto;
 }
-.algorithmModal {
-   position: absolute;
-   top: 80px;
-   left: 40px;
-   right: 40px;
-   bottom: 40px;
-   padding-top: 20px;
-   padding-bottom: 20px;
+#close-solution{
+   display: flex;
+   justify-content: flex-end;
+}
+#close-solution a {
+	text-decoration: none;
+   border: 0 none;
+	display: block;
+	width: 60px;
+	height: 60px;
+	background-color: #1e3d59;
+
+	-webkit-transition: all 0.2s ease-in-out;
+   -moz-transition: all 0.2s ease-in-out;
+   -o-transition: all 0.2s ease-in-out;
+   -ms-transition: all 0.2s ease-in-out;
+   transition: all 0.2s ease-in-out;
+
+   transform: rotate(315deg);
+
+   color: #fff;
+   font-size: 20px;
+   line-height: 60px;
+ 	border-radius: 100%;
+}
+#close-solution a:hover { background-color: #632878; }
+.solution {
+   display: flex;
+   width: inherit;
+   flex-direction: column;
+   align-content: center;
+}
+.solutionHeader h1{
+   font-size: 35px;
+   color: #1e3d59;
+}
+.solution > .content {
+   text-align: left;
+   width: inherit;
+   background-color: #f5f0e1;
+   padding: 15px;
+   font-size: 15px/1.9em;
+   border-radius: 3px;
+   color: #1e3d59;
+}
+.content > .description {
    padding-left: 20px;
    padding-right: 20px;
-   overflow-y: auto;
-   overflow-x: scroll;
-   background-color: white;
-   border-left: solid 15px #FAFAFA;
-   border-top: solid 15px #FAFAFA;
-   display: flex;
- }
- .algorithmOverlay {
-   position: fixed;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   background-color: #82A0C2;
- }
-.algorithmModal h1 {
-   text-align: center;
- }
- .algorithmModal .algorithmButtons {
-   width: 100%;
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   justify-content: center;
- }
- .algorithmModal h1 {
-    margin-left: auto;
-    margin-right: auto;
- }
- .algorithmModal p {
-   margin-top:0;
-   margin-bottom:0;
-   min-width: 90%;
-   margin-left: auto;
-   margin-right: auto;
- }
- .algorithmModal .description {
-    color: darkslategray !important;
-    font-style: oblique;
-    display: inline-block;
-    white-space: pre;
- }
- .algorithmModal .solution {
-    border: thick solid #696969;
-    background-color: #282828;
-    color: #66FF66;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    overflow-x: auto;
-    white-space: pre;
- }
+   overflow:hidden;
+   overflow-x: auto;
+   margin-top: 15px;
+   padding-top: 10px;
+   padding-bottom: 20px;
+}
+.content > .code {
+   overflow:hidden;
+   overflow-x: auto;
+   margin-top: 15px;
+   padding-top: 10px;
+   padding-bottom: 20px;
+   background-color: black;
+}
 
+.description p {
+   margin-bottom: 0px;
+}
+
+.content .codeHeader{
+   color: red;
+   font-weight: bolder;
+   font-size: 19px/1.1em;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+.code p {
+   padding-left: 15px;
+   padding-right: 15px;
+}
+.description > .dList {
+   min-width: 1000px;
+}
+.code > .codeList {
+   min-width: 1000px;
+}
+.dList p {
+   white-space: nowrap;
+   overflow-x: hidden;
+   display: block;
+}
+.codeList p {
+   white-space: nowrap;
+   overflow-x: hidden;
+   display: block; 
+   margin-bottom: -20px;
+}
+.algorithmButtons {
+   margin-top: 25px;
+ }
 /* ------------------------------------------------------------------ */
 /* i. Contact Section
 /* ------------------------------------------------------------------ */
@@ -1206,8 +1240,14 @@ footer .social-links li:first-child { margin-left: 0; }
    margin-left: 10px;
    margin-right: 10px;
 }
+.leetcode-btn:hover{
+   filter: brightness(85%);
+}
 .close-btn{
    background-color: #f14c25 !important;
    margin-left: 10px;
    margin-right: 10px;
+}
+.close-btn:hover{
+   filter: brightness(90%);
 }
