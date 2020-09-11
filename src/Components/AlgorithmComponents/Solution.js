@@ -83,7 +83,7 @@ class Solution extends Component {
             <div className="solution">
                 <div
                     id="close-solution"
-                    onClick={() => { showSolution ? closeSolution() : {}}}
+                    onClick={() => { showSolution ? closeSolution() : console.log('')}}
                 >
                     <a><i className="icon-plus"></i></a>
                 </div>
@@ -109,7 +109,7 @@ class Solution extends Component {
                 <div className="algorithmButtons">
                     <span
                         onClick={
-                            () => { showSolution ? closeSolution() : {}}}
+                            () => { showSolution ? closeSolution() : console.log('')}}
                     >
                         <a  
                             className="button btn close-btn"
