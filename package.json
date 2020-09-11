@@ -9,6 +9,7 @@
     "bluebird": "^3.7.2",
     "dotenv": "^8.2.0",
     "emailjs-com": "^2.6.3",
+    "highlight.js": "^10.2.0",
     "jquery": "^3.2.1",
     "particles-bg": "^2.3.12",
     "react": "^16.2.0",
