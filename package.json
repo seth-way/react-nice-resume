@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "anix": "^0.3.3",
+    "atob": "^2.1.2",
     "axios": "^0.20.0",
     "bluebird": "^3.7.2",
     "dotenv": "^8.2.0",
