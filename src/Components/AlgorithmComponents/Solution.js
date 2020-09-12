@@ -109,7 +109,7 @@ class Solution extends Component {
                 <div className="algorithmButtons">
                     <span
                         onClick={
-                            () => { showSolution ? closeSolution() : {}}}
+                            () => { showSolution ? closeSolution() : console.log('')}}
                     >
                         <a  
                             className="button btn close-btn"
