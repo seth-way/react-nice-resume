@@ -21,7 +21,6 @@
     "react-scripts": "3.4.3",
     "request": "^2.88.2",
     "styled-components": "^5.1.1",
-    "yarn": "^1.22.5"
   },
   "scripts": {
     "start": "react-scripts start",
